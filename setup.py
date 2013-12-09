@@ -23,7 +23,7 @@ setup(
         ]
     },
     url="https://github.com/Unholster/django-lookup",
-    install_requires =[],
+    install_requires =['Unidecode',],
     description="Easy SlugField management",
     long_description=read("README.md"),
     classifiers=["Development Status :: 5 - Production/Stable", "Topic :: Utilities"]
