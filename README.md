@@ -1,34 +1,44 @@
 django-lookup
 =============
-Lookup is a simple Django app to easy work with slug charfields and fuzzy finding in
-your models.
+Provides lookup tables for Django models including fuzzy-matching helpers and lookup table management features.
 
 Quick start
 -----------
 
-1. Add "lookup" to your INSTALLED_APPS setting like this::
-
+1. Add "lookup" to your `INSTALLED_APPS` :
+```python
     INSTALLED_APPS = (
         ...
         'lookup',
     )
+```
+2. Run `python manage.py syncdb` to create the lookup models
 
-2. Run `python manage.py syncdb` to create the lookup models.
-            
-Use example:
-        def option_key(self, option):
-        	return option.name if hasattr(option, 'name') else option
+Usage example
+-----
+```python
+import lookup
+from myapp.models import Thing
 
-		...
+domain = lookup.Domain("stuff")
 
-		fuzzy_string = "Some incorrectly spelled key"  
-  		
-  		# Creates a lookup object for the Territory model
-    	zone_lookup = LookupTable(Territory)
+def make_key(name):
+  return name.lower().split(" ")[0]
 
-    	# Creates a lookup list using what's already on the table.
-        zone_lookup.create_aliases(self.option_key) 
+name = "Foo bar"
+key = key_from_name(name)  # "foo"
 
-        # Obtains a territory using a slug from the fuzzy_string and tries to obtain the object associated to it
-        # if no exact matches, proposes alternatives using fuzzy finding or to create a new object.
-        zone, created = zone_lookup.prompt(fuzzy_string, defaults={'name': fuzzy_string, cutoff=0.5, n=5) 
+try:
+  # Lookup a Thing by "foo" in the "stuff" domain
+  obj = domain.lookup(key)
+except LookupFailed:
+  # Find similar objects
+  results = domain.fuzzy_lookup(key, threshold=0.25)
+  if len(results) > 0:
+    # Found a close-enough result
+    obj, distance = results
+  else:
+    # We'll add this Thing since it hasn't been found
+    thing = Thing(name=name) # "Foo bar"
+    domain.add(key, thing) # foo -> Thing(Foo bar), in stuff domain
+```
