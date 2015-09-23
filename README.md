@@ -13,6 +13,19 @@ Quick start
     )
 ```
 2. Run `python manage.py syncdb` to create the lookup models
+3. Configure a cache backend (not required)
+```python
+    LOOKUP_CACHE_BACKEND = "redis://localhost"
+```
+4. Configure domain options (not required)
+```python
+    LOOKUP_DOMAINS = {
+        'stuff': {
+            'key_comparison_function': 'myapp.compare_keys',
+        }
+    }
+```
+
 
 Usage example
 -----
@@ -30,10 +43,10 @@ key = key_from_name(name)  # "foo"
 
 try:
   # Lookup a Thing by "foo" in the "stuff" domain
-  obj = domain.lookup(key)
+  obj = domain.get(key)
 except LookupFailed:
-  # Find similar objects
-  results = domain.fuzzy_lookup(key, threshold=0.25)
+  # Find objects with similar keys (within a 0.25 threshold)
+  results = domain.search(key, threshold=0.25)
   if len(results) > 0:
     # Found a close-enough result
     obj, distance = results
