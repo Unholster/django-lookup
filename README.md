@@ -21,7 +21,7 @@ Quick start
 ```python
     LOOKUP_DOMAINS = {
         'stuff': {
-            'key_comparison_function': 'myapp.compare_keys',
+            'comparison_function': 'myapp.compare_keys',
         }
     }
 ```

@@ -1,15 +1,9 @@
 import pytest
 from lookup import Domain
-from .testapp.models import Thing
+from .factories import ThingFactory
 
 
 pytestmark = pytest.mark.django_db
-
-
-def ThingFactory():  # noqa
-    thing = Thing()
-    thing.save()
-    return thing
 
 
 @pytest.fixture
