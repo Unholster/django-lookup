@@ -5,6 +5,9 @@ from difflib import get_close_matches
 import re
 import collections
 
+from .domain import Domain, default_comparison_function
+
+
 STRIP_RE = re.compile(r'[^a-z0-9#]')
 
 

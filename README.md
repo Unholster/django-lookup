@@ -49,9 +49,9 @@ except LookupFailed:
   results = domain.search(key, threshold=0.25)
   if len(results) > 0:
     # Found a close-enough result
-    obj, distance = results
+    obj, similarity = results
   else:
     # We'll add this Thing since it hasn't been found
     thing = Thing(name=name) # "Foo bar"
-    domain.add(key, thing) # foo -> Thing(Foo bar), in stuff domain
+    domain.set(key, thing) # foo -> Thing(Foo bar), in stuff domain
 ```

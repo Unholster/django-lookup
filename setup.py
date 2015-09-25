@@ -2,6 +2,7 @@
 import os
 from setuptools import setup, find_packages
 
+
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
@@ -9,22 +10,22 @@ def read(fname):
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name= "unholster.django-lookup",
-    version= "0.1.0",
-    author = u"Unholster",
-    author_email = "sebastian@unholster.com",
-    maintainer = u"Andrés Villavicencio",
-    maintainer_email = "andres@unholster.com",
-    packages = find_packages(),
-    license = "MIT License",
+    name="django-lookup",
+    version="0.1.0",
+    author="Unholster",
+    author_email="sebastian@unholster.com",
+    maintainer="Andrés Villavicencio",
+    maintainer_email="andres@unholster.com",
+    packages=find_packages(),
+    license="MIT License",
     package_data={
-        'lookup' : [
+        'lookup': [
             '*.*',
         ]
     },
     url="https://github.com/Unholster/django-lookup",
     install_requires =['Unidecode',],
-    description="Easy SlugField management",
+    description="Lookup tables for Django models with management features and fuzzy matching",  # noqa
     long_description=read("README.md"),
-    classifiers=["Development Status :: 5 - Production/Stable", "Topic :: Utilities"]
+    classifiers=["Development Status :: 5 - Production/Stable", "Topic :: Utilities"]  # noqa
 )
