@@ -44,7 +44,7 @@ key = key_from_name(name)  # "foo"
 try:
   # Lookup a Thing by "foo" in the "stuff" domain
   obj = domain.get(key)
-except LookupFailed:
+except KeyError:
   # Find objects with similar keys (within a 0.25 threshold)
   results = domain.search(key, threshold=0.25)
   if len(results) > 0:
