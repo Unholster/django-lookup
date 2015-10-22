@@ -49,7 +49,8 @@ except KeyError:
   results = domain.search(key, threshold=0.25)
   if len(results) > 0:
     # Found a close-enough result, get the first result
-    obj = domain.get(results[0])
+    best_key, score = results[0]
+    obj = domain.get(best_key)
   else:
     # We'll add this Thing since it hasn't been found
     thing = Thing(name=name) # "Foo bar"
