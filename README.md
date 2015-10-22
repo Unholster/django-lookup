@@ -45,11 +45,11 @@ try:
   # Lookup a Thing by "foo" in the "stuff" domain
   obj = domain.get(key)
 except KeyError:
-  # Find objects with similar keys (within a 0.25 threshold)
+  # Find similar keys (within a 0.25 threshold)
   results = domain.search(key, threshold=0.25)
   if len(results) > 0:
-    # Found a close-enough result
-    obj, similarity = results
+    # Found a close-enough result, get the first result
+    obj = domain.get(results[0])
   else:
     # We'll add this Thing since it hasn't been found
     thing = Thing(name=name) # "Foo bar"
