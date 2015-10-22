@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 from django.core.management.base import BaseCommand
 from django.contrib.contenttypes.models import ContentType
-from ... import LookupTable
+from lookup.legacy import LookupTable
 from optparse import make_option
 
 class Command(BaseCommand):
