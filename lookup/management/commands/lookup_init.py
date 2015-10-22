@@ -11,14 +11,14 @@ class Command(BaseCommand):
         for fq_name in fq_model_names:
             field_name = None
             app_label, model_name = fq_name.split(".", 1)
-            
+
             try:
                 model_name, field_name = model_name.split(".", 1)
             except:
                 pass
 
             content_type = ContentType.objects.get(
-                    app_label=app_label, 
+                    app_label=app_label,
                     model=model_name
                 )
             table = LookupTable(content_type.model_class())

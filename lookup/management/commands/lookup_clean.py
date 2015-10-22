@@ -30,6 +30,6 @@ class Command(BaseCommand):
         for fq_name in fq_model_names:
             app_label, model_name = fq_name.rsplit(".", 1)
             yield ContentType.objects.get(
-                    app_label=app_label, 
+                    app_label=app_label,
                     model=model_name
                 )
