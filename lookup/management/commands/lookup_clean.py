@@ -1,7 +1,7 @@
 # -*- coding: utf8 -*-
 from django.core.management.base import BaseCommand
 from django.contrib.contenttypes.models import ContentType
-from ... import LookupTable
+from lookup.legacy import LookupTable
 from optparse import make_option
 
 class Command(BaseCommand):
@@ -30,6 +30,6 @@ class Command(BaseCommand):
         for fq_name in fq_model_names:
             app_label, model_name = fq_name.rsplit(".", 1)
             yield ContentType.objects.get(
-                    app_label=app_label, 
+                    app_label=app_label,
                     model=model_name
                 )
