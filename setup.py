@@ -6,8 +6,8 @@ setup(
     version="0.0.1",
     author="Sebastián Acuña",
     author_email="sebastian@unholster.com",
-    maintainer="Andrés Villavicencio",
-    maintainer_email="andres@unholster.com",
+    maintainer="Sebastián Acuña",
+    maintainer_email="sebastian@unholster.com",
     packages=find_packages(),
     license="MIT License",
     package_data={
