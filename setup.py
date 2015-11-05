@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="django-lookup",
-    version="0.1.0",
+    version="0.0.1",
     author="Sebastián Acuña",
     author_email="sebastian@unholster.com",
     maintainer="Andrés Villavicencio",
